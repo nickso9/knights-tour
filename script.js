@@ -7,10 +7,10 @@ class Board {
     populateBoard(length) {
         let board = [];
 
-        for (let i = 0; i < this.length; i++) {
+        for (let i = 0; i < length; i++) {
             let coords = ["a", "b", "c", "d", "e", "f", "g"];
             let row = []
-            for (let j = 0; j < this.length; j++) {
+            for (let j = 0; j < length; j++) {
                 row.push(coords[j] + i);
             }
             board.unshift(row)
@@ -29,11 +29,10 @@ class Knight {
         this.upright = this.makeMove(this.location, 1, -2);
         this.leftup = this.makeMove(this.location, -2, -1);
         this.rightup = this.makeMove(this.location, 2, -1);
-        // this.bottomleft = null;
-        // this.bottomright = null;
-        // this.leftbottom = null;
-        // this.rightbottom = null; 
-        // this.populateMoves(board);
+        this.bottomleft = this.makeMove(this.location, -2, 2);
+        this.bottomright = this.makeMove(this.location, 2, 2);
+        this.leftbottom = this.makeMove(this.location, -1, 2);
+        this.rightbottom = this.makeMove(this.location, 1, 2); 
     }
 
     isValid(locX, locY) {
@@ -64,7 +63,11 @@ const board = new Board(5);
 console.log(board.board)
 const knight = new Knight('c2', board);
 
-console.log(knight.upleft);
-console.log(knight.upright);
-console.log(knight.leftup);
-console.log(knight.rightup);
+// console.log(knight.upleft);
+// console.log(knight.upright);
+// console.log(knight.leftup);
+// console.log(knight.rightup);
+// console.log(knight.bottomleft);
+// console.log(knight.bottomright);
+// console.log(knight.leftbottom);
+// console.log(knight.rightbottom);
