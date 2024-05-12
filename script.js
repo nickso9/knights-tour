@@ -6,7 +6,6 @@ class Board {
 
     populateBoard(length) {
         let board = [];
-
         for (let i = 0; i < length; i++) {
             let coords = ["a", "b", "c", "d", "e", "f", "g"];
             let row = []
@@ -29,8 +28,8 @@ class Knight {
         this.upright = this.makeMove(this.location, 1, -2);
         this.leftup = this.makeMove(this.location, -2, -1);
         this.rightup = this.makeMove(this.location, 2, -1);
-        this.bottomleft = this.makeMove(this.location, -2, 2);
-        this.bottomright = this.makeMove(this.location, 2, 2);
+        this.bottomleft = this.makeMove(this.location, -2, 1);
+        this.bottomright = this.makeMove(this.location, 2, 1);
         this.leftbottom = this.makeMove(this.location, -1, 2);
         this.rightbottom = this.makeMove(this.location, 1, 2); 
     }
@@ -57,17 +56,43 @@ class Knight {
     }
 }
 
+class GenerateTour {
+    constructor(length, position) {
+        this.board = new Board(length);
+        this.knightsTour = null;
+        this.generate(position, []);
+    }
 
+    generate(root, array) {
+        
+        let funcArray = ["upleft", "upright", "leftup", "rightup", "bottomleft", "bottomright", "leftbottom", "rightbottom"];
 
-const board = new Board(5);
-console.log(board.board)
-const knight = new Knight('c2', board);
+        if (array.includes(root)) {
+            return false;
+        }
+        
+        let knight = new Knight(root, this.board);
+        array.push(knight.position);
+        
 
-// console.log(knight.upleft);
-// console.log(knight.upright);
-// console.log(knight.leftup);
-// console.log(knight.rightup);
-// console.log(knight.bottomleft);
-// console.log(knight.bottomright);
-// console.log(knight.leftbottom);
-// console.log(knight.rightbottom);
+        if (array.length == this.board.length * this.board.length) {
+            this.knightsTour = array;
+            return true;
+        }   
+        
+        for (let moves of funcArray) {
+            if (knight[moves] != null) {
+                if (this.generate(knight[moves], array.slice())) {
+                    return true;
+                }      
+            }
+        }
+
+        array.pop();
+        return false;
+    }
+}
+
+const generate = new GenerateTour(5, "a0");
+console.log(generate.knightsTour)
+
