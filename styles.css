@@ -37,3 +37,14 @@ img {
     border: 1px solid black;
     position: relative;
 }
+
+#userActions {
+    text-align: center;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+#resetBtn {
+    padding: 5px 10px;
+    display: none;
+}
