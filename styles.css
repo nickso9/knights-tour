@@ -1,0 +1,26 @@
+body {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.container {
+    width: 100%;
+
+    /* border: 1px solid black; */
+    
+}
+
+.black {
+    background-color: black;
+}
+
+.row {
+    display: flex;
+}
+
+.square {
+    color: orange;
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+}
