@@ -65,7 +65,7 @@ class GenerateTour {
 
     generate(root, array) {
         
-        let funcArray = ["upleft", "upright", "leftup", "rightup", "bottomleft", "bottomright", "leftbottom", "rightbottom"];
+        let moveArray = ["upleft", "upright", "leftup", "rightup", "bottomleft", "bottomright", "leftbottom", "rightbottom"];
 
         if (array.includes(root)) {
             return false;
@@ -80,7 +80,7 @@ class GenerateTour {
             return true;
         }   
         
-        for (let moves of funcArray) {
+        for (let moves of moveArray) {
             if (knight[moves] != null) {
                 if (this.generate(knight[moves], array.slice())) {
                     return true;
