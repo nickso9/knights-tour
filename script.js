@@ -35,7 +35,6 @@ function generateBoard() {
 window.addEventListener("click", function(e) {
     const target = e.target;
     if (target.classList.contains("black") && !gameOn) {
-        console.log('test')
         gameOn = true;
         const instructions = document.getElementById("instructions");
         instructions.style.display = "none";
