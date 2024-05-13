@@ -59,7 +59,6 @@ class Knight {
 class GenerateTour {
     constructor(length, position) {
         this.board = new Board(length);
-        // console.log(this.board)
         this.knightsTour = null;
         this.generate(position, []);
     }

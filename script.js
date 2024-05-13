@@ -1,6 +1,4 @@
 
-
-
 let gameOn = false;
 
 function generateBoard() {
@@ -25,6 +23,8 @@ function generateBoard() {
 
             if ((j + i) % 2 == 0) {
                 square.classList.add("black"); 
+            } else {
+                square.classList.add("white"); 
             }
             row.append(square);
         }
@@ -35,6 +35,7 @@ function generateBoard() {
 window.addEventListener("click", function(e) {
     const target = e.target;
     if (target.classList.contains("black") && !gameOn) {
+        console.log('test')
         gameOn = true;
         const instructions = document.getElementById("instructions");
         instructions.style.display = "none";
@@ -56,23 +57,26 @@ function generateKnightsTour(coordinates) {
 
 function animateTour(tourPlots) {
     let counter = 0;
-    let interval = setInterval(() => {
-        if (counter > tourPlots.length - 1) {
-            clearInterval(interval);
-            populateResetButton();
-            return;
-        }
+    plotKnight();
+
+    function plotKnight() {
         const sqaure = document.getElementById(tourPlots[counter]);
         plotKnightElement(sqaure);
         counter++;
-    }, 250);
+
+        if (counter < tourPlots.length) {
+            setTimeout(plotKnight, 250);    
+            return;
+        }
+        populateResetButton();
+    }
 }
 
 function populateResetButton() {
     const resetBtn = document.getElementById("resetBtn");
     resetBtn.style.display = "block";
     resetBtn.addEventListener("click", function(e) {
-        gameOn = true;
+        gameOn = false;
         resetBtn.style.display = "none";
         generateBoard();
     });
