@@ -66,7 +66,6 @@ class GenerateTour {
     generate(root, array) {
         
         let moveArray = ["upleft", "upright", "leftup", "rightup", "bottomleft", "bottomright", "leftbottom", "rightbottom"];
-
         if (array.includes(root)) {
             return false;
         }
@@ -74,7 +73,6 @@ class GenerateTour {
         let knight = new Knight(root, this.board);
         array.push(knight.position);
         
-
         if (array.length == this.board.length * this.board.length) {
             this.knightsTour = array;
             return true;
