@@ -64,7 +64,6 @@ class GenerateTour {
     }
 
     generate(root, array) {
-        
         let moveArray = ["upleft", "upright", "leftup", "rightup", "bottomleft", "bottomright", "leftbottom", "rightbottom"];
         if (array.includes(root)) {
             return false;
